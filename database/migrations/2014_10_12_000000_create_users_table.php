@@ -20,8 +20,6 @@ return new class extends Migration
             $table->string('number')->nullable();
             $table->string('user_type')->nullable();
             $table->string('points')->default(0);
-            $table->decimal('latitude',8,6);
-            $table->decimal('longitude', 9,6);
             $table->integer('postal_code')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
