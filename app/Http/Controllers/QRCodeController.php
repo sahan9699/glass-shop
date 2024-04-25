@@ -9,7 +9,7 @@ class QRCodeController extends Controller
 {
     public function generateQRCode($id)
     {
-        $data = 'http://192.168.1.16:8000/users?query='. $id; // Replace with your actual data
+        $data =  'http://' + env('LOCAL_IP') + ':8000/users?query='. $id; // Replace with your actual data
         $size = 200; // Optional, default size is 200x200 pixels
 
         $qrCode = QRCodeHelper::generate($data, $size);
