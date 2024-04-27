@@ -20,47 +20,38 @@
         <div class="mt-4" id='supplier_group'>
             <div class="mt-4">
                 <x-input-label for="id_number" :value="__('Id Number')" />
-                <x-text-input id="id_number" class="block mt-1 w-full" type="text" name="id_number" :value="old('id_number')" required />
+                <x-text-input id="id_number" class="block mt-1 w-full" type="text" name="id_number" :value="old('id_number')" />
                 <x-input-error :messages="$errors->get('id_number')" class="mt-2" />
             </div>
         </div>
-
-        <!-- Local shop
-            shop name
-            owner name
-            shop address -->
-
-        <!-- Add buyer to edit  -->
-        <!-- reduce point according to buying -->
-        <!-- and add point to shop -->
         <!-- Number -->
         <div id="center_group">
-            <div class="mt-4" id='center_name_group'>
+            <div class="mt-4" >
                 <x-input-label for="center_name" :value="__('Center Name')" />
-                <x-text-input id="center_name" class="block mt-1 w-full" type="text" name="center_name" :value="old('center_name')" required />
+                <x-text-input id="center_name" class="block mt-1 w-full" type="text" name="center_name" :value="old('center_name')"  />
                 <x-input-error :messages="$errors->get('center_name')" class="mt-2" />
             </div>
-            <div class="mt-4" id='manager_group'>
-                <x-input-label for="manager_name" :value="__('Center Manager Name')" />
-                <x-text-input id="manager_name" class="block mt-1 w-full" type="text" name="manager_name" :value="old('manager_name')" required />
+            <div class="mt-4" >
+                <x-input-label for="center_manager_name" :value="__('Center Manager Name')" />
+                <x-text-input id="center_manager_name" class="block mt-1 w-full" type="text" name="center_manager_name" :value="old('center_manager_name')"  />
                 <x-input-error :messages="$errors->get('manager_name')" class="mt-2" />
             </div>
             <div class="mt-4">
-                <x-input-label for="address_center" :value="__('Center Address')" />
-                <x-text-input id="address_center" class="block mt-1 w-full" type="text" name="address_center" :value="old('address_center')" required />
-                <x-input-error :messages="$errors->get('address_center')" class="mt-2" />
+                <x-input-label for="centera_address" :value="__('Center Address')" />
+                <x-text-input id="centera_address" class="block mt-1 w-full" type="text" name="centera_address" :value="old('centera_address')" />
+                <x-input-error :messages="$errors->get('centera_address')" class="mt-2" />
             </div>
         </div>
 
         <div id="shop_group">
             <div class="mt-4">
                 <x-input-label for="shop_name" :value="__('Shop Name')" />
-                <x-text-input id="shop_name" class="block mt-1 w-full" type="text" name="shop_name" :value="old('shop_name')" required />
+                <x-text-input id="shop_name" class="block mt-1 w-full" type="text" name="shop_name" :value="old('shop_name')"  />
                 <x-input-error :messages="$errors->get('center_name')" class="mt-2" />
             </div>
             <div class="mt-4">
                 <x-input-label for="shop_address" :value="__('Shop Address')" />
-                <x-text-input id="shop_address" class="block mt-1 w-full" type="text" name="shop_address" :value="old('shop_address')" required />
+                <x-text-input id="shop_address" class="block mt-1 w-full" type="text" name="shop_address" :value="old('shop_address')"  />
                 <x-input-error :messages="$errors->get('shop_address')" class="mt-2" />
             </div>
         </div>
@@ -122,7 +113,6 @@
                 shop_group.style.display = 'none';
                 center_group.style.display = 'none';
                 supplier_group.style.display = 'block';
-
             } else if(selectBox.value === 'bu') {
                 shop_group.style.display = 'none';
                 center_group.style.display = 'block';
@@ -130,7 +120,7 @@
             } else if(selectBox.value === 'pb') {
                 shop_group.style.display = 'block';
                 center_group.style.display = 'none';
-                supplier_group.style.display = 'none';
+                supplier_group.style.display = 'block';
             }
         });
     </script>

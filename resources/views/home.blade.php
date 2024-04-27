@@ -1330,28 +1330,28 @@
 
             <ul class="list nav__list collapsible__content">
                 @if (Route::has('login'))
-                    @auth
-                    <li class="nav__item">
-                        <a href="{{ url('/dashboard') }}" >Dashboard</a>
-                    </li>
-                    @else
-                    <li class="nav__item">
-                        <a href="{{ route('login') }}" >Log in</a>
-                    </li>
-                    @if (Route::has('register'))
-                    <li class="nav__item">
-                        <a href="{{ route('register') }}" >Register</a>
-                    </li>
+                @auth
+                <li class="nav__item">
+                    <a href="{{ url('/dashboard') }}">Dashboard</a>
+                </li>
+                @else
+                <li class="nav__item">
+                    <a href="{{ route('login') }}">Log in</a>
+                </li>
+                @if (Route::has('register'))
+                <li class="nav__item">
+                    <a href="{{ route('register') }}">Register</a>
+                </li>
 
-                    @endif
-                @endauth
-          
                 @endif
-                
+                @endauth
+
+                @endif
+
             </ul>
         </nav>
     </header>
-    <section class="block block--dark block--skewed-left hero" >
+    <section class="block block--dark block--skewed-left hero">
         <div class="container grid grid-col-2">
             <header class="block__header hero__content" data-aos="fade-up-right">
                 <h1 data-aos="zoom-in-up" class="block__heading">
@@ -1373,7 +1373,7 @@
     </section>
 
 
- 
+
 
     <section class="block container block-feature">
         <header class="block__header">
@@ -1553,9 +1553,16 @@
         </div>
     </section>
 
-  
 
-    <script src="./js/main.js"></script>
+
+    <script >
+        const collapsibles = document.querySelectorAll(".collapsible");
+        collapsibles.forEach((item) =>
+            item.addEventListener("click", function() {
+                this.classList.toggle("collapsible--expanded");
+            })
+        );
+    </script>
     <script src="https://kit.fontawesome.com/463b7fee90.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>

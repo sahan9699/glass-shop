@@ -32,8 +32,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/users', [UserController::class, 'show'])->name('user.show');
-    Route::put('/users/{id}', [UserController::class, 'update'])->name('user.edit');
+    Route::get('/users', [UserController::class, 'index'])->name('user.index');
+    Route::get('/users/search', [UserController::class, 'search'])->name('user.search');
+    Route::put('/users/{id}/edit', [UserController::class, 'update'])->name('user.edit');
+    Route::put('/users/local_shop/edit/{id}', [UserController::class, 'localShopUpdate'])->name('user.localShopUpdate');
 });
 
 
