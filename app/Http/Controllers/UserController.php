@@ -18,7 +18,18 @@ class UserController extends Controller
     public function index()
     {
         $results = [];
-        $allUsers = User::all(); // Find the resource by its ID, throwing a 404 error if not found
+
+        $allUsers = User::with('postalCode')->get(); 
+        // foreach ($allUsers as $user) {
+        //     if ($user->postalCode) {
+        //         // Postal code details are available
+        //        dd($user->postalCode->code);
+        //         // Use $postalCodeDetails as needed
+        //     } else {
+        //         // Postal code details are not available
+        //     }
+        // }
+ 
         return view('dashboard', compact('allUsers', 'results')); // Pass the retrieved resource to a view for display
     }
     /**

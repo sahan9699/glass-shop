@@ -5,9 +5,9 @@
             <label for="user_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label>
             <select id="user_type" name="user_type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
                 <option selected>Choose User Type</option>
-                <option value="sl">Supplier</option>
-                <option value="bu">Centers</option>
-                <option value="pb">Local Shop</option>
+                <option value="1">Supplier</option>
+                <option value="2">Centers</option>
+                <option value="3">Local Shop</option>
             </select>
         </div>
         <!-- Name -->
@@ -55,11 +55,16 @@
                 <x-input-error :messages="$errors->get('shop_address')" class="mt-2" />
             </div>
         </div>
-        <!-- Postal Code -->
+
         <div class="mt-4">
-            <x-input-label for="postal_code" :value="__('Postal Code')" />
-            <x-text-input id="postal_code" class="block mt-1 w-full" type="text" name="postal_code" :value="old('postal_code')" required />
-            <x-input-error :messages="$errors->get('numner')" class="mt-2" />
+            <label for="postal_code" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select Postal Code</label>
+            <select id="postal_code" name="postal_code" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+            <option selected>Choose User Postal Code</option>
+            @foreach ($postalCodes as $postalCode) {
+                <option value="{{$postalCode->id}}">{{$postalCode->code}}</option>
+            }
+            @endforeach
+            </select>
         </div>
         <!-- Number -->
         <div class="mt-4" id='number_group'>
@@ -109,15 +114,15 @@
         supplier_group.style.display = 'none';
 
         selectBox.addEventListener('change', function() {
-            if (selectBox.value === 'sl') {
+            if (selectBox.value === '1') {
                 shop_group.style.display = 'none';
                 center_group.style.display = 'none';
                 supplier_group.style.display = 'block';
-            } else if(selectBox.value === 'bu') {
+            } else if(selectBox.value === '2') {
                 shop_group.style.display = 'none';
                 center_group.style.display = 'block';
                 supplier_group.style.display = 'none';
-            } else if(selectBox.value === 'pb') {
+            } else if(selectBox.value === '3') {
                 shop_group.style.display = 'block';
                 center_group.style.display = 'none';
                 supplier_group.style.display = 'block';

@@ -3,7 +3,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    @if(Auth::user()->user_type == 'sl')
+                    @if(Auth::user()->user_type_id == '1')
                     <form action="{{ route('user.search')}} " method="GET" class=" mb-5 w-full">
                         @csrf
                         <div class="mb-4">
@@ -90,12 +90,12 @@
                         </thead>
                         <tbody>
                             @foreach ($allUsers as $user)
-                            @if($user->user_type == 'bu')
-                            <tr>
-                                <td class="border px-4 py-2 text-center">{{ $user->name }}</td>
-                                <td class="border px-4 py-2 text-center">{{ $user->number }}</td>
-                            </tr>
-                            @endif
+                                @if($user->user_type_id == '2')
+                                <tr>
+                                    <td class="border px-4 py-2 text-center">{{ $user->name }}</td>
+                                    <td class="border px-4 py-2 text-center">{{ $user->number }}</td>
+                                </tr>
+                                @endif
                             @endforeach
                         </tbody>
                     </table>
@@ -111,7 +111,7 @@
                         </thead>
                         <tbody>
                             @foreach ($allUsers as $user)
-                            @if($user->user_type == 'pb')
+                            @if($user->user_type_id == '3')
                             <tr>
                                 <td class="border px-4 py-2 text-center">{{ $user->name }}</td>
                                 <td class="border px-4 py-2 text-center">{{ $user->number }}</td>
@@ -123,7 +123,7 @@
                     @endif
 
 
-                    @if(Auth::user()->user_type == 'bu')
+                    @if(Auth::user()->user_type_id == '2')
                     <form action="{{ route('user.search')}} " method="GET" class=" mb-5 w-full">
                         @csrf
                         <div class="mb-4">
@@ -186,18 +186,18 @@
                         </thead>
                         <tbody>
                             @foreach ($allUsers as $user)
-                            @if($user->user_type == 'sl')
-                            <tr>
-                                <td class="border px-4 py-2 text-center">{{ $user->name }}</td>
-                                <td class="border px-4 py-2 text-center">{{ $user->number}}</td>
-                            </tr>
-                            @endif
+                                @if($user->user_type_id == '1')
+                                <tr>
+                                    <td class="border px-4 py-2 text-center">{{ $user->name }}</td>
+                                    <td class="border px-4 py-2 text-center">{{ $user->number}}</td>
+                                </tr>
+                                @endif
                             @endforeach
                         </tbody>
                     </table>
                     @endif
 
-                    @if(Auth::user()->user_type == 'pb')
+                    @if(Auth::user()->user_type_id == '3')
                     <form action="{{ route('user.search')}} " method="GET" class=" mb-5 w-full">
                         @csrf
                         <div class="mb-4">
@@ -245,7 +245,7 @@
                         </thead>
                         <tbody>
                             @foreach ($allUsers as $user)
-                            @if($user->user_type == 'sl')
+                            @if($user->user_type_id == '1')
                             <tr>
                                 <td class="border px-4 py-2 text-center">{{ $user->name }}</td>
                                 <td class="border px-4 py-2 text-center">{{ $user->number}}</td>

@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class User extends Authenticatable
 {
@@ -28,8 +30,8 @@ class User extends Authenticatable
         'shop_name',
         'shop_address',
         'points',
-        'user_type',
-        'postal_code',
+        'user_type_id',
+        'postal_code_id',
         'password',
     ];
 
@@ -51,4 +53,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+   
+
+    public function postalCode(): BelongsTo
+    {
+        return $this->belongsTo(PostalCode::class);
+    }
 }

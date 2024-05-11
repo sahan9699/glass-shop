@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\PostalCode;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -20,7 +21,8 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+        $postalCodes = PostalCode::all();
+        return view('auth.register',compact('postalCodes'));
     }
 
     /**
@@ -33,7 +35,7 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'number' => ['required', 'string'],
-            'user_type' => ['required', 'string'],
+            'user_type' => ['required', 'numeric'],
             'postal_code' => ['required', 'numeric'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
@@ -49,8 +51,8 @@ class RegisteredUserController extends Controller
             'centera_address' => $request->centera_address,
             'shop_name' => $request->shop_name,
             'shop_address' => $request->shop_address,          
-            'user_type' => $request->user_type,
-            'postal_code' => $request->postal_code,
+            'user_type_id' => $request->user_type,
+            'postal_code_id' => $request->postal_code,
             'password' => Hash::make($request->password),
         ]);
 
